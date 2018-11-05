@@ -28,10 +28,21 @@ if __name__ == "__main__":
                     except:
                         print(item['fields']['name'].strip(), "***************", variable)
                 if flag:
-                    print(item['fields']['name'].strip())
+                    if len(item['fields']['name'].split('__')) > 1:
+                        print(item['fields']['name'], "\t", item['fields']['name'].split('__')[0].strip().lstrip('es_'),
+                              "\t",
+                              item['fields']['name'].split('__')[1].strip())
+                    else:
+                        print(item['fields']['name'])
 
             else:
-                print(item['fields']['name'].strip())
+                count += 1
+                if len(item['fields']['name'].split('__')) > 1:
+                    print(item['fields']['name'], "\t", item['fields']['name'].split('__')[0].strip().lstrip('es_'),
+                          "\t",
+                          item['fields']['name'].split('__')[1].strip())
+                else:
+                    print(item['fields']['name'])
 
     print("num:", num)
     print("count:", count)
