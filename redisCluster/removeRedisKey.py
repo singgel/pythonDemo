@@ -21,5 +21,7 @@ def redis_cluster():
 
     redisconn.set('name', 'admin')
     print("name is: ", redisconn.get('name'))
+    for key in redisconn.keys("rc.item.ft.yn.*"):
+        redisconn.delete(key)
 
 redis_cluster()
