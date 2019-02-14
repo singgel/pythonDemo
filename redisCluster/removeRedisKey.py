@@ -19,9 +19,9 @@ def redis_cluster():
         print("Connect Error!")
         sys.exit(1)
 
-    redisconn.set('name', 'admin')
-    print("name is: ", redisconn.get('name'))
-    for key in redisconn.keys("rc.item.ft.yn.*"):
+    keys = redisconn.keys("rc.item.ft.*");
+    for key in keys:
         redisconn.delete(key)
+    print(len(keys))
 
 redis_cluster()
