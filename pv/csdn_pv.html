@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 用iframe主要是为了避免使用window.open（）方法，一直弹窗，弹得你怀疑人生。用子窗口让他在一个网页内部自己刷自己的就成了。 -->
+    <iframe src="https://blog.csdn.net/singgel/article/details/129506216" width="1200" height="600"></iframe>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+    <script type="text/javascript">
+        setInterval(function () {
+            console.log("刷屏");
+            $('iframe').attr('src', $('iframe').attr('src'));
+        }, 35000)  
+    </script>
+</body>
+
+</html>
