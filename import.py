@@ -77,8 +77,16 @@ def get_page(u_name):
 
 # 获取文章总阅读量
 def get_all(html):
-    read_num = int(re.compile(r'<dl.*?text-center.*?title.*?(\d[0-9][0-9][0-9]*).*?>').search(html).group(1))
-    return read_num
+    if html is None:
+        print("get_all: 网页内容为空，无法解析阅读量")
+        return 0
+    match = re.compile(r'<dl.*?text-center.*?title.*?(\d[0-9][0-9][0-9]*).*?>').search(html)
+    if match:
+        read_num = int(match.group(1))
+        return read_num
+    else:
+        print("get_all: 正则未匹配到阅读量，可能网页结构已变")
+        return 0
 
 
 def parse_page(html):
